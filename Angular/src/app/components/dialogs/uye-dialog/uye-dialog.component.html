@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="AdSoyad" placeholder="AdSoyad" name="AdSoyad" required type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="Email" placeholder="Email" name="Email" required type="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="KullaniciAdi" placeholder="Kullanici Adi" name="KullaniciAdi" required
+        type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" >
+      <mat-label>Lütfen Seçiniz (Gerekli)</mat-label>
+      <mat-select  required formControlName="UyeAdmin" placeholder="UyeAdmin" name="UyeAdmin">
+        <mat-option *ngFor="let ua of uyema"  [value]="ua">{{ua}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="Sifre" placeholder="Sifre" name="Sifre" required
+        type="text">
+    </mat-form-field>
+  </form>
+
+</div>
+
+<button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)"
+  [disabled]="frm.invalid">Kaydet</button>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">Kapat</button>
